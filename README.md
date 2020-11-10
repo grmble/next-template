@@ -21,3 +21,8 @@
 * Delete the stylesheets, `import bulma/css/bulma.css` in `_app.tsx`
 * You can have per Module imports in `Name.module.css`, import via `import styles from './styles/Name.module.css'`
 * Use the per-module styles as `className={styles.yourClass}`
+
+## Classnames
+
+* `yarn add classnames && yarn add -D @types/classnames`
+* Gives you `classnames('foo', {bar: true})`

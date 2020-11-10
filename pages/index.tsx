@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { MouseEventHandler, useState } from 'react'
 import styles from '../styles/Home.module.css'
+import classnames from 'classnames'
 
 export default function Home() {
   let [modalActive, setModalActive] = useState(false)
@@ -20,7 +21,7 @@ export default function Home() {
             <img src="/bulma-logo.png" width="112" height="28" />
           </a>
 
-          <a role="button" className={"navbar-burger burger" + (showNavbar ? " is-active" : "")}
+          <a role="button" className={classnames("navbar-burger", "burger", { "is-active": showNavbar })}
             onClick={() => setShowNavbar(!showNavbar)}
             aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
@@ -29,7 +30,7 @@ export default function Home() {
           </a>
         </div>
 
-        <div id="navbarBasicExample" className={"navbar-menu" + (showNavbar ? " is-active" : "")}>
+        <div id="navbarBasicExample" className={classnames("navbar-menu", { "is-active": showNavbar })}>
           <div className="navbar-start">
             <a className="navbar-item">
               Home
@@ -205,7 +206,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={"modal" + (modalActive ? " is-active" : "")}>
+      <div className={classnames("modal", { "is-active": modalActive })}>
         <div className="modal-background"></div>
         <div className="modal-card">
           <header className="modal-card-head">
