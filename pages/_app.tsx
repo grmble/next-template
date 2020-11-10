@@ -1,5 +1,5 @@
 import { AppProps } from 'next/dist/next-server/lib/router/router'
-import '../styles/globals.css'
+import 'bulma/css/bulma.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />
