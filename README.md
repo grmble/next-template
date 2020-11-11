@@ -26,3 +26,29 @@
 
 * `yarn add classnames && yarn add -D @types/classnames`
 * Gives you `classnames('foo', {bar: true})`
+
+## Next-Auth
+
+* `yarn add next-auth && yarn add -D @types/next-auth`
+* Add API route `[...nextauth].ts`
+
+    import NextAuth from 'next-auth'
+    import Providers from 'next-auth/providers'
+
+    const options = {
+      // Configure one or more authentication providers
+      providers: [
+        Providers.GitHub({
+          clientId: process.env.GITHUB_ID,
+          clientSecret: process.env.GITHUB_SECRET
+        }),
+        // ...add more providers here
+      ],
+
+      // A database is optional, but required to persist accounts in a database
+      // database: process.env.DATABASE_URL,
+    }
+
+    export default (req, res) => NextAuth(req, res, options)
+
+* Add `GITHUB_ID`, `GITHUB_SECRET` and DATABASE_URL to `.env.local`

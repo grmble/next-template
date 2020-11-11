@@ -1,11 +1,13 @@
 import Head from 'next/head'
-import { MouseEventHandler, useState } from 'react'
+import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import classnames from 'classnames'
+import { signIn, signOut, useSession } from 'next-auth/client'
 
 export default function Home() {
   let [modalActive, setModalActive] = useState(false)
   let [showNavbar, setShowNavbar] = useState(false)
+  let [session, loading] = useSession()
 
   return (
     <div className={'blubb ' + styles.container}>
@@ -69,9 +71,17 @@ export default function Home() {
                 <a className="button is-primary">
                   <strong>Sign up</strong>
                 </a>
-                <a className="button is-light">
-                  Log in
-                </a>
+                {!session &&
+                  <a role="button" className="button is-light" onClick={() => signIn()}>
+                    Log in
+                 </a>
+                }
+                {session &&
+                  <a role="button" className="button is-light" onClick={() => signOut()}>
+                    Log Out
+                 </a>
+                }
+
               </div>
             </div>
           </div>
@@ -210,18 +220,12 @@ export default function Home() {
         <div className="modal-background"></div>
         <div className="modal-card">
           <header className="modal-card-head">
-            <p className="modal-card-title">Modal title</p>
+            <p className="modal-card-title">Logged in User</p>
             <a role="button" className="delete" aria-label="close" onClick={() => setModalActive(false)}></a>
           </header>
           <section className="modal-card-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis placerat justo.
-            Nulla ut placerat ligula, quis rhoncus dui. Curabitur porta molestie lectus,
-            id posuere mauris faucibus eu. Praesent pulvinar pulvinar quam at mollis.
-            Suspendisse lorem odio, tincidunt et nisi sed, varius mollis est. Nam sodales
-            fermentum nulla accumsan aliquet. Suspendisse vel nisi ut turpis auctor mattis
-            in scelerisque purus. Sed aliquam at tortor euismod accumsan. Sed cursus erat eget
-            enim mattis consequat. Sed rutrum egestas risus et efficitur. Praesent sit amet tortor aliquam,
-            fringilla orci vel, venenatis velit.</p>
+            {session && <p>{JSON.stringify(session)}</p>}
+            {!session && <p>No user logged in.</p>}
           </section>
           <footer className="modal-card-foot">
             <a role="button" className="button is-success" onClick={() => setModalActive(false)}>Save changes</a>
