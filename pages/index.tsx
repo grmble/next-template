@@ -4,10 +4,10 @@ import styles from '../styles/Home.module.css'
 import classnames from 'classnames'
 import { signIn, signOut, useSession } from 'next-auth/client'
 
-export default function Home() {
-  let [modalActive, setModalActive] = useState(false)
-  let [showNavbar, setShowNavbar] = useState(false)
-  let [session, loading] = useSession()
+export default function Home(): JSX.Element {
+  const [modalActive, setModalActive] = useState(false)
+  const [showNavbar, setShowNavbar] = useState(false)
+  const [session, loading] = useSession()
 
   return (
     <div className={'blubb ' + styles.container}>
@@ -108,8 +108,8 @@ export default function Home() {
             </h2>
 
 
-            <h4>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</h4>
-            <h5>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</h5>
+            <h4>&quot;Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...&quot;</h4>
+            <h5>&quot;There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...&quot;</h5>
 
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function Home() {
         <div className="container">
           <h1 className="title">Section</h1>
           <h2 className="subtitle">
-            A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+            A simple container to divide your page into <strong>sections</strong>, like the one you are currently reading
           </h2>
 
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis placerat justo.

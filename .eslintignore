@@ -1,0 +1,4 @@
+node_modules
+migrations
+knexfile.ts
+.next

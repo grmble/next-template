@@ -3,7 +3,7 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { getSession } from "next-auth/client"
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const session = await getSession({ req })
   res.statusCode = 200
   if (session) {

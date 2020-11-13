@@ -72,6 +72,12 @@
 In the example knexfile, the database is read from the environment,
 so you have to `source ./.env.local` before running the klex commands.
 
+
+## ESLint
+
+* `yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react`
+
+
 ## GraphQL
 
 https://blog.logrocket.com/building-a-graphql-server-in-next-js/
