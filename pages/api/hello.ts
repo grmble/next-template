@@ -1,8 +1,13 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import { NextApiRequest, NextApiResponse } from "next"
+import { getSession } from "next-auth/client"
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const session = await getSession({ req })
   res.statusCode = 200
-  res.json({ name: 'John Doe' })
+  if (session) {
+    res.json(session)
+  }
+  res.json({})
 }
